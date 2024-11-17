@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<companiesList>
+    <companies>
+        <company address="Витебск,ул.Марка Шагала" auditor="Аудитор3" email="epam@gmail.com" fullName="ЗАО &quot;EPAM&quot;" internetAddress="https://www.epam.com" phone="+375445324532">
+            <activity>Разработка ПО</activity>
+            <branch>Информационные технологии</branch>
+            <countEmployees>302</countEmployees>
+            <dateFoundation/>
+            <dateUpdate/>
+            <shortName>ЕПАМ</shortName>
+        </company>
+    </companies>
+</companiesList>
