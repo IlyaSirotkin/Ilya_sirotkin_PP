@@ -1,0 +1,4 @@
+Изначальна строка: gfd(hui)gdf(gdgfsfdfdf)dfsf1223sds323sdf(dfs(fsfsf)213421safdsf23dfd00033232000dfsdfsdfds23232300000fdsfs1000000
+Строка без записей в скобках: gfdgdfdfsf1223sds323sdf(dfs213421safdsf23dfd00033232000dfsdfsdfds23232300000fdsfs1000000
+Строка без чисел с кол-вом цифр >=3: gfd(hui)gdf(gdgfsfdfdf)dfsf12sds32sdf(dfs(fsfsf)21safdsf23dfd00dfsdfsdfds23fdsfs10
+Строка без незначащихся нулей: gfd(hui)gdf(gdgfsfdfdf)dfsf1223sds323sdf(dfs(fsfsf)213421safdsf23df33232000dfsdfsdfds23232300000fdsfs1000000
