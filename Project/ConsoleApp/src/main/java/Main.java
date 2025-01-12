@@ -1,9 +1,12 @@
 import FileHandlersFactoryPattern.ConcreteCreator;
 import FileHandlersFactoryPattern.Creator;
 import FileHandlersFactoryPattern.FileHandler;
+import org.json.simple.parser.ParseException;
 
 import javax.swing.JFileChooser;
+import javax.xml.bind.JAXBException;
 import java.io.File;
+import java.io.IOException;
 
 
 public class Main {
@@ -41,7 +44,7 @@ public class Main {
                 fileHandler = creator.createTextHandler(file);
                 break;
             }
-            case "yaml": {
+            case "yml": {
                 fileHandler = creator.createYAMLHandler(file);
                 break;
             }
@@ -50,7 +53,17 @@ public class Main {
                 break;
             }
         }
-        if (fileHandler != null)
-            fileHandler.fileProcessing();
+        if (fileHandler != null) {
+            try {
+                fileHandler.fileProcessing();
+                fileHandler.getResult().forEach(System.out::println);
+            } catch (IOException e) {
+                    throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
