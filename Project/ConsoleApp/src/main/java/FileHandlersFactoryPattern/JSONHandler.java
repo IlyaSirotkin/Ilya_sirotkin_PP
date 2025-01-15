@@ -15,12 +15,10 @@ public class JSONHandler extends FileHandler {
 
     private JSONParser parser;
 
-    private JSONHandler() {}
-
     public JSONHandler(File _file) {
-        file=_file;
+        file = _file;
         parser = new JSONParser();
-        result=new ArrayList<>();
+        result = new ArrayList<>();
     }
 
     @Override
@@ -35,13 +33,17 @@ public class JSONHandler extends FileHandler {
         operationsArray.add((JSONArray) jObj.get("multiplication"));
         operationsArray.add((JSONArray) jObj.get("division"));
         operationsArray.add((JSONArray) jObj.get("combination"));
-        Expression expression=null;
-        double value=0;
+
+        Expression expression = null;
+
+        double value = 0;
         for (int i = 0; i < operationsArray.size(); i++) {
-            for (int j = 0; j < operationsArray.get(i).size(); j++) {
-                expression = new ExpressionBuilder((String) operationsArray.get(i).get(j)).build();
-                value = expression.evaluate();
-                result.add(value);
+            if (operationsArray.get(i) != null) {
+                for (int j = 0; j < operationsArray.get(i).size(); j++) {
+                    expression = new ExpressionBuilder((String) operationsArray.get(i).get(j)).build();
+                    value = expression.evaluate();
+                    result.add(value);
+                }
             }
         }
     }

@@ -18,7 +18,7 @@ public class TextHandler extends FileHandler{
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         line = reader.readLine();
-        Expression expression=null;
+        Expression expression;
         double value=0;
         while(line!=null){
             expression = new ExpressionBuilder(line).build();

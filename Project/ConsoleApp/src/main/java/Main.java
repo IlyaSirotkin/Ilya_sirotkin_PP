@@ -44,7 +44,7 @@ public class Main {
                 fileHandler = creator.createTextHandler(file);
                 break;
             }
-            case "yml": {
+            case "yaml": {
                 fileHandler = creator.createYAMLHandler(file);
                 break;
             }
@@ -58,7 +58,7 @@ public class Main {
                 fileHandler.fileProcessing();
                 fileHandler.getResult().forEach(System.out::println);
             } catch (IOException e) {
-                    throw new RuntimeException(e);
+                throw new RuntimeException(e);
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             } catch (JAXBException e) {

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class XMLHandler extends FileHandler {
-    private XMLHandler() {}
 
     public XMLHandler(File _file) {
         file = _file;
@@ -46,11 +45,11 @@ public class XMLHandler extends FileHandler {
 
         private List<List<String>> allOperations = new ArrayList<>();
 
-        public List<List<String>> getAllOperations() {
+        private List<List<String>> getAllOperations() {
             return allOperations;
         }
 
-        public void mergeAllOperations() {
+        private void mergeAllOperations() {
             allOperations.add(addition);
             allOperations.add(subtraction);
             allOperations.add(multiplication);
@@ -72,14 +71,16 @@ public class XMLHandler extends FileHandler {
 
         deserialization.mergeAllOperations();
 
-        Expression expression = null;
+        Expression expression;
         double value = 0;
 
         for (int i = 0; i < deserialization.getAllOperations().size(); i++) {
-            for (int j = 0; j < deserialization.getAllOperations().get(i).size(); j++) {
-                expression = new ExpressionBuilder(deserialization.getAllOperations().get(i).get(j)).build();
-                value = expression.evaluate();
-                result.add(value);
+            if (deserialization.getAllOperations().get(i) != null) {
+                for (int j = 0; j < deserialization.getAllOperations().get(i).size(); j++) {
+                    expression = new ExpressionBuilder(deserialization.getAllOperations().get(i).get(j)).build();
+                    value = expression.evaluate();
+                    result.add(value);
+                }
             }
         }
     }
