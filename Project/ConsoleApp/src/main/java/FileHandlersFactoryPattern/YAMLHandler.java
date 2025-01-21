@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+import org.apache.logging.log4j.LogManager;
+
 
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class YAMLHandler extends FileHandler {
 
     @Override
     public void fileProcessing() throws IOException {
+        LogManager.getLogger(YAMLHandler.class).info("YAML file processing has started");
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
 
         YAMLDeserialization deserialization = om.readValue(file, YAMLDeserialization.class);
@@ -63,7 +65,11 @@ public class YAMLHandler extends FileHandler {
                     value = expression.evaluate();
                     result.add(value);
                 }
+
+            }else{
+                LogManager.getLogger(YAMLHandler.class).debug("Ariеhmetic operation's list is empty");
             }
         }
+        LogManager.getLogger(YAMLHandler.class).info("YAML file processing has finished");
     }
 }

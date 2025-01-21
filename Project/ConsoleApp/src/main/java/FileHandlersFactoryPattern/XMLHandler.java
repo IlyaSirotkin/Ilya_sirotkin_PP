@@ -2,6 +2,7 @@ package FileHandlersFactoryPattern;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+import org.apache.logging.log4j.LogManager;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -60,7 +61,7 @@ public class XMLHandler extends FileHandler {
 
     @Override
     public void fileProcessing() throws FileNotFoundException, JAXBException {
-
+        LogManager.getLogger(XMLHandler.class).info("XML file processing has started");
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
         String body = reader.lines().collect(Collectors.joining());
@@ -81,8 +82,12 @@ public class XMLHandler extends FileHandler {
                     value = expression.evaluate();
                     result.add(value);
                 }
+            }else{
+                LogManager.getLogger(XMLHandler.class).debug("Ariеhmetic operation's list is empty");
             }
+
         }
+        LogManager.getLogger(XMLHandler.class).info("XML file processing has finished");
     }
 
 

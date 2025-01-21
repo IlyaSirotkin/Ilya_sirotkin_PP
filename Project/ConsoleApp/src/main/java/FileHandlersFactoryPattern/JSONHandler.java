@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+import org.apache.logging.log4j.LogManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
@@ -23,7 +24,7 @@ public class JSONHandler extends FileHandler {
 
     @Override
     public void fileProcessing() throws IOException, ParseException {
-
+        LogManager.getLogger(JSONHandler.class).info("JSON file processing has started");
         Object obj = parser.parse(new FileReader(file));
         JSONObject jObj = (JSONObject) obj;
 
@@ -44,7 +45,10 @@ public class JSONHandler extends FileHandler {
                     value = expression.evaluate();
                     result.add(value);
                 }
+            }else{
+                LogManager.getLogger(JSONHandler.class).debug("Ariеhmetic operation's list is empty");
             }
         }
+        LogManager.getLogger(JSONHandler.class).info("JSON file processing has finished");
     }
 }
